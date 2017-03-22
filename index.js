@@ -46,12 +46,21 @@ var clearCache = () => {
 }
 
 var sumCache = () => {
-
+  // var operators = cache.join('').split(/\D+/);
+  // var numbers = cache.join('').split(/\D/);
+  cache = cache.join('').replace(/÷/, '/').replace(/×/, '*');
+  cache = eval(cache);
+  updateDisplay();
+  cache = [];
 }
 
 var updateDisplay = () => {
   var display = document.querySelector("div#display");
-  display.textContent = cache.join("");
+  if (typeof cache === "number"){
+    display.textContent = cache;
+  } else {
+    display.textContent = cache.join("");
+  }
 }
 
 
