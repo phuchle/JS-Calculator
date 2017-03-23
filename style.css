@@ -62,5 +62,6 @@ html, body {
 }
 
 #operators p {
-  padding: 20px;
+  margin: 0;
+  padding: 15px;
 }
