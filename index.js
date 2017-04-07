@@ -19,7 +19,6 @@ var detectButtonClick = () => {
 }
 
 var storeButtonValue = button => {
-  console.log(button.textContent);
   cache.push(button.textContent);
   updateDisplay();
 }
