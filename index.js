@@ -34,7 +34,7 @@ var clearCache = () => {
 }
 
 var sumCache = () => {
-  cache = cache.join('').replace(/÷/, '/').replace(/×/, '*');
+  cache = cache.join('').replace(/÷/g, '/').replace(/×/g, '*');
   cache = eval(cache);
   updateDisplay();
   cache = [];
