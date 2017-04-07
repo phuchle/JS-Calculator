@@ -1,16 +1,3 @@
-// User Story: I can add, subtract, multiply and divide two numbers.
-// User Story: I can clear the input field with a clear button.
-// User Story: I can keep chaining mathematical operations together until I hit the equal button, and the calculator will tell me the correct output.
-
-// user pushes the numbers and operators to chain an expression
-// the numbers are shown on the display and then the expression is executed when the equal button is pressed
-
-// --- need a way to detect which buttons are pushed
-// --- need a way to track the history of entered numbers and operations
-// --- need to display the cache on #display as user presses buttons
-// delete function
-// equal function
-
 var cache = [];
 
 var detectButtonClick = () => {
@@ -23,6 +10,7 @@ var detectButtonClick = () => {
         clearCache();
       } else if (button.id === "equals") {
         sumCache();
+        storeMemory();
       } else {
         storeButtonValue(button);
       }
@@ -31,6 +19,7 @@ var detectButtonClick = () => {
 }
 
 var storeButtonValue = button => {
+  console.log(button.textContent);
   cache.push(button.textContent);
   updateDisplay();
 }
@@ -46,12 +35,15 @@ var clearCache = () => {
 }
 
 var sumCache = () => {
-  // var operators = cache.join('').split(/\D+/);
-  // var numbers = cache.join('').split(/\D/);
   cache = cache.join('').replace(/÷/, '/').replace(/×/, '*');
   cache = eval(cache);
   updateDisplay();
   cache = [];
+}
+
+var storeMemory = () => {
+  var display = document.querySelector("div#display");
+  cache.push(display.innerText);
 }
 
 var updateDisplay = () => {
